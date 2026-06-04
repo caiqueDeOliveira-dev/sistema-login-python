@@ -1,27 +1,26 @@
-# 🔐 Sistema de Login em Python
+# Sistema de Login com SQLite
 
-Projeto desenvolvido em Python com foco em lógica de programação e autenticação de usuários.
+Sistema de autenticação desenvolvido em Python com armazenamento de usuários em banco de dados SQLite.
 
-## 🚀 Funcionalidades
-- Login de usuário
-- Verificação de senha
-- Limite de tentativas
-- Bloqueio após erros
+## Funcionalidades
 
-## 💻 Tecnologias utilizadas
+- Cadastro de usuários
+- Login
+- Banco de dados SQLite
+- Senhas criptografadas com SHA-256
+- Validação de credenciais
+
+## Tecnologias
+
 - Python
+- SQLite
+- Hashlib
 
-## 📚 Objetivo do projeto
-Praticar:
-- variáveis
-- estruturas condicionais
-- loops
-- validação de login
-- lógica de programação
+## Como executar
 
-## ▶️ Como executar
+python database.py
+python login.py
 
-Clone o repositório:
+## Autor
 
-```bash
-git clone https://github.com/caiqueDeOliveira-dev/sistema-login-python
+Caique Castaldeli
