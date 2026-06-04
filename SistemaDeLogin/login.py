@@ -1,31 +1,70 @@
-usuario_correto = 'Caique'
-senha_correta = '1234'
+import sqlite3
 
-tentativas = 3
+while True:
 
-while tentativas > 0:
-    
-    print('\n === Sistema de Login ===')
+    print("\n=== SISTEMA ===")
+    print("1 - Login")
+    print("2 - Cadastrar usuário")
+    print("3 - Sair")
 
-    usuario = input('Digite Seu Nome de Usuario: ')
-    senha = input('Digite Sua Senha: ')
-    
-    print(usuario)
-    print(senha)
+    opcao = input("Escolha uma opção: ")
 
-    if usuario == usuario_correto and senha == senha_correta:
-      print(' \n Login Realizado com Sucesso! ')
-      break
-    
+    # LOGIN
+    if opcao == "1":
+
+        usuario = input("Usuário: ")
+        senha = input("Senha: ")
+
+        conexao = sqlite3.connect("usuarios.db")
+        cursor = conexao.cursor()
+
+        cursor.execute(
+            """
+            SELECT * FROM usuarios
+            WHERE usuario = ?
+            AND senha = ?
+            """,
+            (usuario, senha)
+        )
+
+        resultado = cursor.fetchone()
+
+        if resultado:
+            print("\nLogin realizado com sucesso!")
+        else:
+            print("\nUsuário ou senha incorretos.")
+
+        conexao.close()
+
+    # CADASTRO
+    elif opcao == "2":
+
+        usuario = input("Novo usuário: ")
+        senha = input("Nova senha: ")
+
+        conexao = sqlite3.connect("usuarios.db")
+        cursor = conexao.cursor()
+
+        try:
+            cursor.execute(
+                "INSERT INTO usuarios(usuario, senha) VALUES (?, ?)",
+                (usuario, senha)
+            )
+
+            conexao.commit()
+
+            print("Usuário cadastrado com sucesso!")
+
+        except sqlite3.IntegrityError:
+            print("Usuário já existe!")
+
+        conexao.close()
+
+    # SAIR
+    elif opcao == "3":
+
+        print("Encerrando sistema...")
+        break
+
     else:
-         print('Usuario ou Senha Incorreta! Tente Novamente...')
-    print(f'Voce tem {tentativas - 1} Tentativas Restantes...')
-    
-   
-    if tentativas == 1:
-         print('\n Voce Exedeu o Número de Tentativas Permitidas ! Acesso Bloqueado!')
-         tentativas = 0
-    else:     tentativas -= 1
-    
-    
-    
+        print("Opção inválida!")
