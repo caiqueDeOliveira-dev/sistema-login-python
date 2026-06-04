@@ -1,4 +1,5 @@
 import sqlite3
+import hashlib
 
 while True:
 
@@ -15,6 +16,10 @@ while True:
         usuario = input("Usuário: ")
         senha = input("Senha: ")
 
+        senha_hash = hashlib.sha256(
+            senha.encode()
+        ).hexdigest()
+
         conexao = sqlite3.connect("usuarios.db")
         cursor = conexao.cursor()
 
@@ -24,7 +29,7 @@ while True:
             WHERE usuario = ?
             AND senha = ?
             """,
-            (usuario, senha)
+            (usuario, senha_hash)
         )
 
         resultado = cursor.fetchone()
@@ -42,13 +47,17 @@ while True:
         usuario = input("Novo usuário: ")
         senha = input("Nova senha: ")
 
+        senha_hash = hashlib.sha256(
+            senha.encode()
+        ).hexdigest()
+
         conexao = sqlite3.connect("usuarios.db")
         cursor = conexao.cursor()
 
         try:
             cursor.execute(
                 "INSERT INTO usuarios(usuario, senha) VALUES (?, ?)",
-                (usuario, senha)
+                (usuario, senha_hash)
             )
 
             conexao.commit()
