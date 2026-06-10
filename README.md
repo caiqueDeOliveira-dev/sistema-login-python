@@ -23,8 +23,4 @@ python login.py
 
 ## Autor
 
-<<<<<<< HEAD
-Caique Castaldeli
-=======
-Caique Castaldeli
->>>>>>> b2543a00b7571ed2923c5d798ad99d7795a976fc
+Caique De Oliveira
