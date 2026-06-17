@@ -1,8 +1,8 @@
 # 🔐 Sistema de Login e Cadastro (Python)
 
 <p align="center">
-  <img src="./screenshots/screenshots.png" alt="Tela de Login" width="45%" />
-  <img src="./screenshots/screenshots1.png" alt="Tela de Cadastro" width="45%" />
+  <img src="./Screenshots/screenshots.png" alt="Tela de Login" width="45%" />
+  <img src="./Screenshots/screenshots1.png" alt="Tela de Cadastro" width="45%" />
 </p>
 
 Um sistema completo e seguro de **Login e Cadastro de Usuários** desenvolvido em **Python**. O projeto simula um ambiente real de autenticação, contando com validação de dados, persistência em banco de dados e uma interface gráfica moderna e responsiva. Ideal para ser integrado como camada de segurança em sistemas mais complexos.
